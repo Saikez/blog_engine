@@ -52,7 +52,20 @@ describe Post do
     post.category_id.must_equal(category.id)
   end
 
-  it 'belongs to a blog through a category'
+  it 'belongs to a blog through a category' do
+  	blog = Blog.create!(name: "Simons Blog2")
+    author = blog.authors.create!(name: "Simon")
+    category = blog.categories.create!(name: "Computers2")
+
+    post = Post.create!(
+      title: "My Computer2",
+      content: "A post on computers2",
+      author: author,
+      category: category
+    )
+
+    post.category.blog_id.must_equal(blog.id)
+  end
 
   it 'has many tags through posttags'
 end
