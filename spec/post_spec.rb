@@ -13,7 +13,7 @@ describe Post do
       category: category
     )
 
-    post.author_id.must_equal(author.id)
+    post.author.must_equal(author)
   end
 
   it 'has many comments' do
@@ -49,7 +49,7 @@ describe Post do
       category: category
     )
 
-    post.category_id.must_equal(category.id)
+    post.category.must_equal(category)
   end
 
   it 'belongs to a blog through a category' do
@@ -64,8 +64,23 @@ describe Post do
       category: category
     )
 
-    post.category.blog_id.must_equal(blog.id)
+    post.category.blog.must_equal(blog)
   end
 
-  it 'has many tags through posttags'
+  it 'has many tags through posttags' do
+  	blog = Blog.create!(name: "Simons Blog2")
+    author = blog.authors.create!(name: "Simon")
+    category = blog.categories.create!(name: "Computers2")
+
+    post = Post.create!(
+      title: "My Computer2",
+      content: "A post on computers2",
+      author: author,
+      category: category
+    )
+
+    post.tags.create!(name: "tagged!")
+
+    post.tags.empty?.must_equal(false)
+  end
 end
