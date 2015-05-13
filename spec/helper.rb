@@ -7,6 +7,7 @@ require_relative '../models/blog'
 require_relative '../models/author'
 require_relative '../models/category'
 require_relative '../models/post'
+require_relative '../models/comment'
 
 class MiniTest::Test
   def setup
