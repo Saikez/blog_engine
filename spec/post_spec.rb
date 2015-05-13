@@ -19,7 +19,6 @@ describe Post do
   it 'has many comments' do
   	blog = Blog.create!(name: "Simons Blog2")
     author = blog.authors.create!(name: "Simon")
-    author2 = blog.authors.create!(name: "Not Simon")
     category = blog.categories.create!(name: "Computers2")
 
     post = Post.create!(
@@ -38,7 +37,20 @@ describe Post do
     post.comments.empty?.must_equal(false)
   end
 
-  it 'belongs to a category'
+  it 'belongs to a category' do
+  	blog = Blog.create!(name: "Simons Blog2")
+    author = blog.authors.create!(name: "Simon")
+    category = blog.categories.create!(name: "Computers2")
+
+    post = Post.create!(
+      title: "My Computer2",
+      content: "A post on computers2",
+      author: author,
+      category: category
+    )
+
+    post.category_id.must_equal(category.id)
+  end
 
   it 'belongs to a blog through a category'
 
