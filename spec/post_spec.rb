@@ -22,6 +22,7 @@ describe Post do
 
     @post.tags.create!(name: "tagged!")
   end
+  
   it 'belongs to an author' do
     @post.author.must_equal(@author)
   end
