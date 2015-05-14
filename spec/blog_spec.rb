@@ -1,6 +1,7 @@
 require_relative 'helper'
 
 describe Blog do
+
   before do
     @blog = Blog.create!(name: 'BenBlog')
     @author = @blog.authors.create!(name: 'Ben Lovell')
