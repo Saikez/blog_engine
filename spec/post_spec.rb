@@ -1,7 +1,26 @@
 require_relative 'helper'
 
 describe Post do
-  it 'belongs to an author'
+	before do
+		@blog = Blog.create!(name: 'BenBlog')
+    @author = @blog.authors.create!(name: 'Ben Lovell')
+    @category = @blog.categories.create!(name: 'Motorsports')
+
+    @post = Post.create!(
+      title: 'Formula 1',
+      content: 'My first post',
+      author: @author,
+      category: @category
+    )
+
+    Comment.create!(
+    	content: "My first comment!"
+    	post: @post
+    )
+	end
+  it 'belongs to an author' do
+  	@post.author.must_equal(@author)
+  end
 
   it 'has many comments'
 
