@@ -15,6 +15,24 @@ describe Blog do
     )
   end
 
+  it 'is valid with valid attributes' do
+    @blog.valid?.must_equal(true)
+  end
+
+  it 'requires a name' do
+    blog = Blog.new
+
+    blog.valid?.must_equal(false)
+  end
+
+  it 'require a unique name' do
+    Blog.create!(name: 'My Blog')
+
+    blog = Blog.new(name: 'My Blog')
+
+    blog.valid?.must_equal(false)
+  end
+
   it 'has many posts through categories' do
     @blog.posts.empty?.must_equal(false)
   end
