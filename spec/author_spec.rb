@@ -7,8 +7,7 @@ describe Author do
 	end
 
 	it 'has a github profile' do
-		skip
 		author = Author.create!(name: 'Ben', github_profile: 'something')
-		author.twitter_handle.must_equal('something')
+		author.github_profile.must_equal('something')
 	end
 end
