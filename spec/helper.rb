@@ -5,6 +5,7 @@ require 'active_record'
 require 'database_cleaner'
 require 'pry'
 require 'yaml'
+require 'open-uri'
 
 require_relative '../models/blog'
 require_relative '../models/author'

@@ -19,7 +19,7 @@ describe Author do
 	end
 
 	it 'requires a blog' do
-		author = Author.new(name: 'Ben', twitter_handle: '@benlovall', github_profile: 'something')
+		author = Author.new(name: 'Ben', twitter_handle: '@benlovell', github_profile: 'something')
 
 		author.valid?.must_equal(false)
 	end

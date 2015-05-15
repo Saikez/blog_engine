@@ -4,7 +4,7 @@ describe Post do
 
   before do
     @blog = Blog.create!(name: "Simons Blog2")
-    @author = @blog.authors.create!(name: "Simon")
+    @author = @blog.authors.create!(name: "Simon", twitter_handle: "@saikez")
     @category = @blog.categories.create!(name: "Computers2")
 
     @post = Post.create!(
