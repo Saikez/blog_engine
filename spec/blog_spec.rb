@@ -4,7 +4,7 @@ describe Blog do
 
   before do
     @blog = Blog.create!(name: 'BenBlog')
-    @author = @blog.authors.create!(name: 'Ben Lovell', twitter_handle: '@benlovell')
+    @author = @blog.authors.create!(name: 'Ben Lovell', twitter_handle: '@benlovell', github_profile: "benlovell")
     @category = @blog.categories.create!(name: 'Motorsports')
 
     Post.create!(
