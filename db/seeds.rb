@@ -1,8 +1,8 @@
-require 'faker'
+require "faker"
 
-require_relative '../models/blog'
-require_relative '../models/author'
-require_relative '../models/category'
+require_relative "../models/blog"
+require_relative "../models/author"
+require_relative "../models/category"
 
 blog = Blog.find_or_create_by!(name: "#{Faker::Name.name} Blog")
 

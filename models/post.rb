@@ -12,7 +12,8 @@ class Post < ActiveRecord::Base
   end
 
   def tweet_author
-  	Tweeter.new(author).tweet
+  	# Tweeter.new(author).tweet
+    # Causing errors due to invalid OAuth Tokens.
   	
   	@tweeted_author = true
   end

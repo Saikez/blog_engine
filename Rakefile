@@ -1,5 +1,5 @@
-require 'standalone_migrations'
-require 'rake/testtask'
+require "standalone_migrations"
+require "rake/testtask"
 
 StandaloneMigrations::Tasks.load_tasks
 
