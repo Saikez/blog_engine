@@ -1,24 +1,28 @@
-require 'minitest/autorun'
-require 'active_record'
-require 'database_cleaner'
-require 'pry'
+ENV["RAILS_ENV"] ||= "test"
 
-require_relative '../models/blog'
-require_relative '../models/author'
-require_relative '../models/category'
-require_relative '../models/post'
-require_relative '../models/comment'
-require_relative '../models/tag'
-require_relative '../models/post_tag'
+require "minitest/autorun"
+require "active_record"
+require "database_cleaner"
+require "pry"
+require "yaml"
+require "open-uri"
+
+require_relative "../models/blog"
+require_relative "../models/author"
+require_relative "../models/category"
+require_relative "../models/post"
+require_relative "../models/comment"
+require_relative "../models/tag"
+require_relative "../models/post_tag"
+require_relative "../models/tweeter"
+
 
 class MiniTest::Test
   def setup
-    ActiveRecord::Base.establish_connection(
-      :adapter => 'sqlite3',
-      :database => 'spec/blog.sqlite3'
-    )
+    dbconfig = YAML::load(File.open("db/config.yml"))
+    ActiveRecord::Base.establish_connection(dbconfig[ENV["RAILS_ENV"]])
 
-    DatabaseCleaner.strategy = :truncation
+    DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.start
   end
 
